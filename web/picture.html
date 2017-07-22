@@ -1,0 +1,25 @@
+<html>
+<head>
+	<script src="js/jquery-1.12.0.min.js"></script>
+	<script type="text/javascript">
+		function next_picture () {
+			img = document.getElementById ( "picture" );
+
+			/* the _ts (timestamp) parameter is added to force the browser
+			   send a request to the server, otherwise if the URL doesn't change
+			   at all the browser does nothing.
+			*/
+			img.setAttribute ( "src", "/picture?_ts=" + Date.now () );
+		}
+
+		setInterval ( next_picture, 10000 );
+
+		$(document).ready ( function () {
+			next_picture ();
+		});
+	</script>
+</head>
+<body>
+	<img id="picture" src="">
+</body>
+</html>
