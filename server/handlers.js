@@ -6,6 +6,20 @@ var cookie = require ( "cookie" );
 var LineByLineReader = require ( "line-by-line" );
 var config = require ( "./config.js" );
 
+
+function response_write_error ( response, err ) {
+	if ( typeof ( err ) == "string" )
+		msg = err;
+	else
+		msg = err.message;
+
+	console.log ( "ERROR: " + msg );
+	if ( err.hasOwnProperty ( "stack" ) ) console.log ( err.stack );
+
+	response.writeHead ( 200, { "Content-type": "text/plain" } );
+	response.write ( msg );
+}
+
 function find_pictures ( dir, fout, parent_path ) {
 	// console.log ( "find_pictures: " + dir + ", " + parent_path );
 
@@ -57,8 +71,7 @@ function view_pictures ( request, response, parsed_url ) {
 
 	} catch ( err ) {
 
-		response.writeHead ( 200, { "Content-type": "text/plain" } );
-		response.write ( err );
+		response_write_error ( response, err );
 	}
 
 	response.end ();
@@ -70,17 +83,19 @@ function get_picture ( request, response, parsed_url ) {
 	var client_id = cookies [ "session" ];
 
 	if ( ! client_id ) {
-		response.writeHead ( 200, { "Content-type": "text/plain" } );
-		response.write ( "Invalid client ID" );
+		//response.writeHead ( 200, { "Content-type": "text/plain" } );
+		//response.write ( "Invalid client ID" );
+		response_write_error ( response, "Invalid client ID" );
 		response.end ();
 		return;
 	};
 
 	var stat = fs.statSync ( client_id + "_pictures.txt" );
 	if ( stat.size == 0 ) {
-		console.log ( "Empty pictures list!" );
-		response.writeHead ( 200, { "Content-type": "text/plain" } );
-		response.write ( "Empty pictures list" );
+		//console.log ( "Empty pictures list!" );
+		//response.writeHead ( 200, { "Content-type": "text/plain" } );
+		//response.write ( "Empty pictures list" );
+		response_write_error ( response, "Empty pictures list" );
 		response.end ();
 		return;
 	}

@@ -32,6 +32,7 @@ function call_handler ( request, response, parsed_url ) {
 
 		} catch ( err ) {
 			console.log ( "ERROR: " + err.code + " - " + err.message );
+			console.log ( err.stack );
 		}
 
 	} else {
