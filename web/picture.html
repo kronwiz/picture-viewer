@@ -1,5 +1,7 @@
 <html>
 <head>
+  <link href="css/picture.css" rel="stylesheet">
+
 	<script src="js/jquery-1.12.0.min.js"></script>
 	<script type="text/javascript">
 		function next_picture () {
@@ -12,7 +14,7 @@
 			img.setAttribute ( "src", "/picture?_ts=" + Date.now () );
 		}
 
-		setInterval ( next_picture, 10000 );
+		setInterval ( next_picture, __DELAY__ );
 
 		$(document).ready ( function () {
 			next_picture ();

@@ -2,6 +2,7 @@
 	"dependencies": {
 		"node-static": "*",
 		"cookie": "*",
-		"line-by-line": "*"
+		"line-by-line": "*",
+		"moment": "*"
 	}
 }
