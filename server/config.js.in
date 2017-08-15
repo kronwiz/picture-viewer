@@ -1,0 +1,1 @@
+exports.BASEDIR = "path/to/images"
