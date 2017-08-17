@@ -1,0 +1,10 @@
+var config = {
+	/* tree view */
+	// default delay value
+	delay: 60,
+
+	/* picture view */
+	// background color behind the displayed picture
+	background_color: '#c3c3c3'
+};
+

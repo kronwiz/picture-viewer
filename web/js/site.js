@@ -49,6 +49,9 @@ $(document).ready ( function () {
 			}
 		}
 	})
+
+	// take default delay value from config
+	$('#delay').val ( config.delay );
 });
 
 function start () {
@@ -56,7 +59,7 @@ function start () {
 	$( '#main input[type="hidden"]' ).remove ();
 	// get selected items
 	var sel_dirs = $("#dirchooser").jstree ( "get_selected", true );
-	//alert ( "sel_dirs: " + JSON.stringify ( sel_dirs ) );
+
 	// fill POST data
 	var form = $("#main");
 	$.each ( sel_dirs, function () {
@@ -68,7 +71,6 @@ function start () {
 		form.append ( el );
 	} );
 
-	//form.submit ();
 	return true;
 }
 
