@@ -12,6 +12,8 @@ It is composed of a client part that retrieves the list of folders from the serv
 
 The server part is based on **node.js** and it is so simple that can be run on a **Raspberry Pi** device (I actually run it on a RPi device with a nodejs version as old as v0.10.9). This part retrieves the list of folders and then one picture at a time when requested by the client.
 
+The server can be accessed by multiple clients at once because each one has its own session with a separate list of pictures to be displayed.
+
 ## Installation
 
 After having downloaded this repository on your server you have to
