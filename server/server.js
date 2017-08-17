@@ -1,6 +1,4 @@
 
-port = 8888;
-
 var http = require ( "http" );
 var url = require ( "url" );
 var path = require ( "path" );
@@ -39,7 +37,7 @@ function call_handler ( request, response, parsed_url ) {
 		document_root.serve ( request, response, function ( err, result ) {
 			if ( err ) {
 				response.writeHead ( err.status, err.headers );
-				response.write ( "Errore nel recuperare il file '" + request.url + "': " + err.message );
+				response.write ( "Error retrieving file '" + request.url + "': " + err.message );
 				response.end ();
 			}
 		} );
@@ -75,6 +73,9 @@ function handle_request ( request, response ) {
 	}
 }
 
+
+port = 8888;
+if ( process.argv [ 2 ] ) port = parseInt ( process.argv [ 2 ] );
 
 console.log ( "Starting server on port " + port );
 

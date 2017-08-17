@@ -1,6 +1,6 @@
 var config = {
 	/* tree view */
-	// default delay value
+	// default delay value (in seconds)
 	delay: 60,
 
 	/* picture view */
